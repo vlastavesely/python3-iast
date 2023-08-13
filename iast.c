@@ -43,8 +43,8 @@ static PyObject *deva(PyObject* self, PyObject* args)
 
 static PyMethodDef module_methods[] =
 {
-	{"iast", iast, METH_VARARGS, "Convert Devanagari to IAST."},
-	{"deva", deva, METH_VARARGS, "Convert IAST to Devanagari."},
+	{"deva_to_iast", iast, METH_VARARGS, "Convert Devanagari to IAST."},
+	{"iast_to_deva", deva, METH_VARARGS, "Convert IAST to Devanagari."},
 	{NULL, NULL, 0, NULL}
 };
 

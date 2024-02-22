@@ -1,14 +1,15 @@
+PYTHON = python3
+
 DISTDIR = /usr/lib/python3/dist-packages
-LIBNAME = iast.cpython-39-x86_64-linux-gnu.so
 
 all:
-	python3 setup.py build
+	$(PYTHON) setup.py bdist_egg
 
 install:
-	install -m 0755 build/lib.linux-x86_64-3.9/$(LIBNAME) $(DISTDIR)
+	$(PYTHON) setup.py install --skip-build --root=$(prefix) --install-layout=deb
 
 uninstall:
-	rm -f $(DISTDIR)/$(LIBNAME)
+	$(RM) -r $(DISTDIR)/iast-1.0.egg-info $(DISTDIR)/iast.cpython-*.so
 
 clean:
-	rm -rf build
+	$(RM) -r build dist iast.egg-info

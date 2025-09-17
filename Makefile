@@ -3,13 +3,13 @@ PYTHON = python3
 DISTDIR = /usr/lib/python3/dist-packages
 
 all:
-	$(PYTHON) setup.py bdist_egg
+	$(PYTHON) -m build --outdir dist
 
 install:
-	$(PYTHON) setup.py install --skip-build --root=$(prefix) --install-layout=deb
+	DEB_PYTHON_INSTALL_LAYOUT=deb $(PYTHON) -m installer --destdir=$(DESTDIR) dist/*.whl
 
 uninstall:
 	$(RM) -r $(DISTDIR)/iast-1.0.egg-info $(DISTDIR)/iast.cpython-*.so
 
 clean:
-	$(RM) -r build dist iast.egg-info
+	$(RM) -r dist iast.egg-info
